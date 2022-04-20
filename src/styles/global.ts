@@ -1,6 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --blue-light: #6A80FF;
+    --blue-mid: #4863F7;
+    --blue-dark: #3249CB;
+    --blue-low: #182049;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -18,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.textBody};
     -webkit-font-smoothing: antialiased;
   }
 
