@@ -2,10 +2,10 @@ export default {
   name: 'dark',
 
   colors: {
-    textTitle: '#E1E1E6',
-    textBody: '#C4C4CC',
+    textTitle: '#e2e8f0',
+    textBody: '#94a3b8',
 
-    background: '#202024',
-    shape: '#29292E'
+    background: '#0f172a',
+    shape: '#1e293b'
   }
 };

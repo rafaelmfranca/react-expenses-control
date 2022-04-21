@@ -2,10 +2,10 @@ export default {
   name: 'light',
 
   colors: {
-    textTitle: '#363F5F',
-    textBody: '#969CB3',
+    textTitle: '#0f172a',
+    textBody: '#334155',
 
-    background: '#E5E5E5',
-    shape: '#FFFFFF'
+    background: '#ffffff',
+    shape: '#f8fafc'
   }
 };

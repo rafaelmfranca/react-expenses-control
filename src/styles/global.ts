@@ -2,10 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --blue-light: #6A80FF;
-    --blue-mid: #4863F7;
-    --blue-dark: #3249CB;
-    --blue-low: #182049;
+    --sky-300: #7dd3fc;
+    --sky-400: #38bdf8; 
+    --sky-500: #0ea5e9;
+
+    --green-400: #4ade80;
+    --red-400: #f87171;
   }
 
   * {
@@ -27,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.textBody};
+    transition: background-color 0.25s linear;
     -webkit-font-smoothing: antialiased;
   }
 
