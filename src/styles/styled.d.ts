@@ -10,6 +10,7 @@ declare module 'styled-components' {
 
       background: string;
       shape: string;
+      shapeBorder: string;
     };
   }
 }

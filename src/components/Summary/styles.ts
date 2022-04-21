@@ -4,7 +4,11 @@ const StyledSummary = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+
   overflow-x: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   div {
     background: ${({ theme }) => theme.colors.shape};
@@ -12,6 +16,7 @@ const StyledSummary = styled.section`
     border-radius: 0.5rem;
     color: ${({ theme }) => theme.colors.textTitle};
     border: 1px solid ${({ theme }) => theme.colors.shapeBorder};
+    min-width: 212px;
 
     header {
       display: flex;
@@ -26,7 +31,7 @@ const StyledSummary = styled.section`
     strong {
       display: block;
       margin-top: 1rem;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 500;
     }
   }

@@ -6,6 +6,7 @@ export default {
     textBody: '#334155',
 
     background: '#ffffff',
-    shape: '#f8fafc'
+    shape: '#f8fafc',
+    shapeBorder: 'rgba(15, 23, 42, 0.1);'
   }
 };
