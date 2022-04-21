@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
 
     --green-400: #4ade80;
     --red-400: #f87171;
+
+    --shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   }
 
   * {
