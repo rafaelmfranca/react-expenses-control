@@ -9,7 +9,9 @@ declare module 'styled-components' {
       textBody: string;
 
       background: string;
+
       shape: string;
+      shapeBorder: string;
     };
   }
 }

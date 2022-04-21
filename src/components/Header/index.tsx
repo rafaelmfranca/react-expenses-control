@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../Logo/index';
 import { RiMoonClearFill, RiSunFill } from 'react-icons/ri';
-import { StyledHeader } from './styles';
+import { StyledHeader, StyledHeaderContent } from './styles';
 
 type HeaderProps = {
   theme: string;
@@ -11,10 +11,12 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   return (
     <StyledHeader>
-      <Logo />
-      <button type="button" onClick={toggleTheme}>
-        {theme === 'light' ? <RiMoonClearFill /> : <RiSunFill />}
-      </button>
+      <StyledHeaderContent>
+        <Logo />
+        <button type="button" onClick={toggleTheme}>
+          {theme === 'light' ? <RiMoonClearFill /> : <RiSunFill />}
+        </button>
+      </StyledHeaderContent>
     </StyledHeader>
   );
 };

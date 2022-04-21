@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.textBody};
-    transition: background-color 0.25s linear;
+    transition: all 0.25s linear;
     -webkit-font-smoothing: antialiased;
   }
 
