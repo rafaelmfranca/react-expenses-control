@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import api from '../../services/api';
 import StyledTransactions from './styles';
 
 const Transactions: React.FC = () => {
+  useEffect(() => {
+    (async () => {
+      const { data } = await api.get('transactions');
+      console.log(data);
+    })();
+  }, []);
+
   return (
     <StyledTransactions>
       <table>
