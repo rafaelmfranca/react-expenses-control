@@ -4,14 +4,15 @@ import { ThemeProvider } from 'styled-components';
 import useTheme from './hooks/useTheme';
 import lightTheme from './styles/themes/light';
 import darkTheme from './styles/themes/dark';
+import Header from './components/Header';
 
 const App: React.FC = () => {
-  const { currTheme } = useTheme();
+  const [theme, toggleTheme] = useTheme();
 
   return (
-    <ThemeProvider theme={currTheme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
-      <h1>Hello, world!</h1>
+      <Header toggleTheme={toggleTheme} theme={theme} />
     </ThemeProvider>
   );
 };
