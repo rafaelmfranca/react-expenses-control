@@ -9,7 +9,11 @@ import {
   iconStyles
 } from './styles';
 
-const FabButton: React.FC = () => {
+type FabButtonProps = {
+  onOpenTransactionModal: (type: string) => void;
+};
+
+const FabButton: React.FC<FabButtonProps> = ({ onOpenTransactionModal }) => {
   return (
     <Fab
       mainButtonStyles={mainButtonStyles}
@@ -17,12 +21,19 @@ const FabButton: React.FC = () => {
       icon={<RiAddFill style={iconStyles} />}
       event={'hover'}
       alwaysShowTitle={true}
-      onClick={() => {}}
     >
-      <Action text="Expense" style={actionExpenseStyle}>
+      <Action
+        text="Expense"
+        style={actionExpenseStyle}
+        onClick={() => onOpenTransactionModal('expense')}
+      >
         <RiArrowDownLine style={iconStyles} />
       </Action>
-      <Action text="Income" style={actionIncomeStyle}>
+      <Action
+        text="Income"
+        style={actionIncomeStyle}
+        onClick={() => onOpenTransactionModal('income')}
+      >
         <RiArrowUpLine style={iconStyles} />
       </Action>
     </Fab>
