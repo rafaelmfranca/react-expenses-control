@@ -9,6 +9,7 @@ declare module 'styled-components' {
       textBody: string;
 
       background: string;
+      modalOverlayBackground: string;
 
       shape: string;
       shapeBorder: string;

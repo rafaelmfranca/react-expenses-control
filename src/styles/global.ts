@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     --red-400: #f87171;
 
     --shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0/0.1),0 4px 6px -4px rgb(0 0 0/0.1);
   }
 
   * {
@@ -51,6 +52,61 @@ const GlobalStyle = createGlobalStyle`
   [disabled] {
     opacity: 0.7;
     cursor: not-allowed;
+  }
+
+  .react-modal-overlay {
+    background-color: ${({ theme }) => theme.colors.modalOverlayBackground};
+    backdrop-filter: blur(3px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    @media (max-width: 728px) {
+      align-items: flex-end;
+      z-index: 9999;
+    }
+  }
+
+  .react-modal-content {
+    width: 100%;
+    max-width: 576px;
+    padding: 3rem;
+    position: relative;
+    
+    background: ${({ theme }) => theme.colors.shape};
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+
+    @media (max-width: 728px) {
+      max-width: 100%;
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+
+  .react-modal-close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    border: none;
+    background: transparent;
+
+    svg {
+      font-size: 1.8rem;
+      color: ${({ theme }) => theme.colors.textBody};
+      transition: filter 0.25s linear;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
   }
 `;
 
