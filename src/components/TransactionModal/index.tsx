@@ -2,9 +2,8 @@ import React, { FormEvent, useId, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
-import { transactionFormInitialState } from '../../utils/constants';
+import { transactionFormInitialState } from '../../utils/common';
 import { v4 as uuidv4 } from 'uuid';
-import api from '../../services/api';
 
 // bind modal for acessibility purposes
 Modal.setAppElement('#root');
@@ -31,9 +30,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     transactionForm.type = transactionType;
     transactionForm.date = new Date();
     transactionForm.amount = Number(transactionForm.amount);
-    api.post('/transactions', transactionForm);
 
-    setTransactionForm(transactionFormInitialState);
     onRequestClose();
   };
 
