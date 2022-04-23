@@ -15,7 +15,7 @@ export const StyledTransactionForm = styled.form`
     font-size: 1rem;
 
     background: ${(props) => props.theme.colors.shape};
-    color: ${(props) => props.theme.colors.textTitle};
+    color: ${(props) => props.theme.colors.textBody};
 
     border: none;
     outline: 1px solid ${(props) => props.theme.colors.shapeBorder};

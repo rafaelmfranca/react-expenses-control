@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { FormEvent, useId, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
+import { transactionFormInitialState } from '../../utils/constants';
+import { v4 as uuidv4 } from 'uuid';
+import api from '../../services/api';
 
 // bind modal for acessibility purposes
 Modal.setAppElement('#root');
@@ -17,6 +20,28 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   onRequestClose,
   transactionType
 }) => {
+  const [transactionForm, setTransactionForm] = useState(
+    transactionFormInitialState
+  );
+
+  const handleAddTransaction = (e: FormEvent) => {
+    e.preventDefault();
+
+    transactionForm.id = uuidv4();
+    transactionForm.type = transactionType;
+    transactionForm.date = new Date();
+    transactionForm.amount = Number(transactionForm.amount);
+    api.post('/transactions', transactionForm);
+
+    setTransactionForm(transactionFormInitialState);
+    onRequestClose();
+  };
+
+  const handleTransactionFormChange = (e: FormEvent) => {
+    const { name, value } = e.target as HTMLInputElement;
+    setTransactionForm({ ...transactionForm, [name]: value });
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -31,11 +56,29 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       >
         <RiCloseFill />
       </button>
-      <StyledTransactionForm>
+      <StyledTransactionForm onSubmit={handleAddTransaction}>
         <h2>Register transaction</h2>
-        <input type="text" placeholder="Title" />
-        <input type="number" placeholder="Value" />
-        <input type="text" placeholder="Category" />
+        <input
+          type="text"
+          placeholder="Title"
+          value={transactionForm.title}
+          name="title"
+          onChange={handleTransactionFormChange}
+        />
+        <input
+          type="number"
+          placeholder="Amount"
+          value={transactionForm.amount}
+          name="amount"
+          onChange={handleTransactionFormChange}
+        />
+        <input
+          type="text"
+          placeholder="Category"
+          value={transactionForm.category}
+          name="category"
+          onChange={handleTransactionFormChange}
+        />
         <StyledButton
           type="submit"
           color={transactionType === 'expense' ? 'red' : 'green'}
