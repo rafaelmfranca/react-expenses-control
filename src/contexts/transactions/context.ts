@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { transactionsContextInitialState } from '../../utils/common';
+import { ITransactionsContextData } from '../../utils/types';
 
-const TransactionsContext = createContext(transactionsContextInitialState);
+const TransactionsContext = createContext({} as ITransactionsContextData);
 
 export default TransactionsContext;

@@ -1,9 +1,9 @@
-import React, { FormEvent, useId, useState } from 'react';
+import React, { FormEvent, useContext, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
 import { transactionFormInitialState } from '../../utils/common';
-import { v4 as uuidv4 } from 'uuid';
+import TransactionsContext from '../../contexts/transactions/context';
 
 // bind modal for acessibility purposes
 Modal.setAppElement('#root');
@@ -19,18 +19,18 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   onRequestClose,
   transactionType
 }) => {
+  const { createTransaction } = useContext(TransactionsContext);
   const [transactionForm, setTransactionForm] = useState(
     transactionFormInitialState
   );
 
-  const handleAddTransaction = (e: FormEvent) => {
+  const handleCreateTransaction = (e: FormEvent) => {
     e.preventDefault();
 
-    transactionForm.id = uuidv4();
     transactionForm.type = transactionType;
-    transactionForm.date = new Date();
-    transactionForm.amount = Number(transactionForm.amount);
+    createTransaction(transactionForm);
 
+    setTransactionForm(transactionFormInitialState);
     onRequestClose();
   };
 
@@ -53,7 +53,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       >
         <RiCloseFill />
       </button>
-      <StyledTransactionForm onSubmit={handleAddTransaction}>
+      <StyledTransactionForm onSubmit={handleCreateTransaction}>
         <h2>Register transaction</h2>
         <input
           type="text"
