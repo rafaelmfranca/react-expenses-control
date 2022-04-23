@@ -12,12 +12,19 @@ const Summary: React.FC = () => {
 
   const summary = transactions.reduce(
     (acc, transaction) => {
-      if (transaction.type === 'income') {
-        acc.incomes += transaction.amount;
-        acc.total += transaction.amount;
+      const { type, amount, currency, exchangeRates } = transaction;
+
+      let convertedAmount = amount;
+      if (currency !== 'BRL') {
+        convertedAmount = amount * Number(exchangeRates[currency].ask);
+      }
+
+      if (type === 'income') {
+        acc.incomes += convertedAmount;
+        acc.total += convertedAmount;
       } else {
-        acc.expenses += transaction.amount;
-        acc.total -= transaction.amount;
+        acc.expenses += convertedAmount;
+        acc.total -= convertedAmount;
       }
 
       return acc;

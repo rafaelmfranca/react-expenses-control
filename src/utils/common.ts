@@ -3,7 +3,7 @@ import { ITransaction, ITransactionsContext } from './types';
 export const transactionFormInitialState: ITransaction = {
   description: '',
   amount: 0,
-  currency: 'USD',
+  currency: 'BRL',
   category: 'Other'
 };
 
@@ -13,6 +13,7 @@ export const transactionsContextInitialState: ITransactionsContext = {
 };
 
 export const currencies = [
+  'BRL',
   'USD',
   'CAD',
   'EUR',

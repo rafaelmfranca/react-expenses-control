@@ -2,7 +2,7 @@ export interface ITransaction {
   id?: string;
   createdAt?: any; // fix that
   type?: string;
-  exchangeRates?: object;
+  exchangeRates?: any; // fix that
   description: string;
   amount: number;
   category: string;
