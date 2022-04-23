@@ -13,7 +13,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
     <StyledTransactionTable>
       <thead>
         <tr>
-          <th>Title</th>
+          <th>Description</th>
           <th>Amount</th>
           <th>Category</th>
           <th>Date</th>
@@ -23,7 +23,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
       <tbody>
         {transactions.map((transaction) => (
           <tr key={transaction.id}>
-            <td className={transaction.type}>{transaction.title}</td>
+            <td className={transaction.type}>{transaction.description}</td>
             <td className={transaction.type}>
               {new Intl.NumberFormat('pt-BR', {
                 style: 'currency',

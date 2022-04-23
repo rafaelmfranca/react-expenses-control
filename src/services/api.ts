@@ -6,5 +6,3 @@ export const getExchangeRates = async () => {
   delete data.USDT;
   return data;
 };
-
-getExchangeRates();

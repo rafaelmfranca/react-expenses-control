@@ -2,7 +2,12 @@ import React, { FormEvent, useContext, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
-import { transactionFormInitialState } from '../../utils/common';
+import {
+  currencies,
+  transactionFormInitialState,
+  incomeCategories,
+  expenseCategories
+} from '../../utils/common';
 import TransactionsContext from '../../contexts/transactions/context';
 
 // bind modal for acessibility purposes
@@ -39,6 +44,9 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     setTransactionForm({ ...transactionForm, [name]: value });
   };
 
+  const categories =
+    transactionType === 'income' ? incomeCategories : expenseCategories;
+
   return (
     <Modal
       isOpen={isOpen}
@@ -57,9 +65,9 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
         <h2>Register transaction</h2>
         <input
           type="text"
-          placeholder="Title"
-          value={transactionForm.title}
-          name="title"
+          placeholder="Description"
+          value={transactionForm.description}
+          name="description"
           onChange={handleTransactionFormChange}
         />
         <input
@@ -69,13 +77,32 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           name="amount"
           onChange={handleTransactionFormChange}
         />
-        <input
-          type="text"
-          placeholder="Category"
-          value={transactionForm.category}
-          name="category"
-          onChange={handleTransactionFormChange}
-        />
+        <div>
+          <label htmlFor="category">Category:</label>
+          <select
+            name="category"
+            id="category"
+            value={transactionForm.category}
+            onChange={handleTransactionFormChange}
+          >
+            {categories.map((category) => (
+              <option key={category}>{category}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="currency">Currency:</label>
+          <select
+            name="currency"
+            id="currency"
+            value={transactionForm.currency}
+            onChange={handleTransactionFormChange}
+          >
+            {currencies.map((currency) => (
+              <option key={currency}>{currency}</option>
+            ))}
+          </select>
+        </div>
         <StyledButton
           type="submit"
           color={transactionType === 'expense' ? 'red' : 'green'}

@@ -33,6 +33,39 @@ export const StyledTransactionForm = styled.form`
       margin-top: 1rem;
     }
   }
+
+  div {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding-right: 0.5rem;
+    }
+
+    select {
+      width: 80%;
+      border-radius: 0.5rem;
+
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+
+      background: ${(props) => props.theme.colors.shape};
+      color: ${(props) => props.theme.colors.textBody};
+
+      border: none;
+      outline: 1px solid ${(props) => props.theme.colors.shapeBorder};
+      transition: outline 0.15s ease-in-out;
+
+      &:focus {
+        outline: 1.5px solid ${(props) => props.theme.colors.textBody};
+      }
+    }
+  }
 `;
 
 export const StyledButton = styled.button`

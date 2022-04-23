@@ -3,9 +3,10 @@ export interface ITransaction {
   createdAt?: any; // fix that
   type?: string;
   exchangeRates?: object;
-  title: string;
+  description: string;
   amount: number;
   category: string;
+  currency: string;
 }
 
 export interface ITransactionsContext {
