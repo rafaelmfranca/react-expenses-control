@@ -22,7 +22,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
             <span>{transaction.category}</span>
             <span>
               {new Intl.DateTimeFormat('pt-BR').format(
-                new Date(transaction.date)
+                new Date(transaction.createdAt)
               )}
             </span>
           </div>
