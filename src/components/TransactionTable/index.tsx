@@ -27,7 +27,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
             <td className={transaction.type}>
               {new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
-                currency: 'BRL'
+                currency: `${transaction.currency}`
               }).format(transaction.amount)}
             </td>
             <td>{transaction.category}</td>

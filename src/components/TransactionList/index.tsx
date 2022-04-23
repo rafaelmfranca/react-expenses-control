@@ -11,11 +11,11 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
     <StyledTransactionList>
       {transactions.map((transaction) => (
         <li key={transaction.id} className={transaction.type}>
-          <p>{transaction.title}</p>
+          <p>{transaction.description}</p>
           <p className={transaction.type}>
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
-              currency: 'BRL'
+              currency: `${transaction.currency}`
             }).format(transaction.amount)}
           </p>
           <div>
