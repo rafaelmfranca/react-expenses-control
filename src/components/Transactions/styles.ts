@@ -1,45 +1,29 @@
 import styled from 'styled-components';
 
 const StyledTransactions = styled.div`
-  margin-top: 4rem;
+  margin-top: 3rem;
 
-  table {
-    margin: 0 auto;
+  section {
     width: 95%;
-    border-spacing: 0 0.5rem;
-    border-collapse: separate;
+    margin: 0 auto;
+    padding: 1rem 0;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.shapeBorder};
 
-    th {
-      font-weight: 400;
-      padding: 1rem 2rem;
-      text-align: left;
-      line-height: 1.5rem;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    tbody tr {
-      border-radius: 0.5rem;
-      box-shadow: var(--shadow-md);
-    }
+    button {
+      border: none;
+      background: transparent;
+      color: ${({ theme }) => theme.colors.textBody};
 
-    td {
-      padding: 1rem 2rem;
-      background: ${({ theme }) => theme.colors.shape};
+      display: flex;
+      align-items: center;
 
-      &:first-of-type {
-        border-radius: 0.5rem 0 0 0.5rem;
-        color: ${({ theme }) => theme.colors.textTitle};
-      }
-
-      &:last-of-type {
-        border-radius: 0 0.5rem 0.5rem 0;
-      }
-
-      &.income {
-        color: var(--green-400);
-      }
-
-      &.expense {
-        color: var(--red-400);
+      svg {
+        font-size: 1.3rem;
+        stroke-width: 0.5;
       }
     }
   }

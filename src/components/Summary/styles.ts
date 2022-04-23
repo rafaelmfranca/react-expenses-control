@@ -17,7 +17,7 @@ const StyledSummary = styled.section`
     border-radius: 0.5rem;
     color: ${({ theme }) => theme.colors.textTitle};
     border: 1px solid ${({ theme }) => theme.colors.shapeBorder};
-    min-width: 212px;
+    min-width: 250px;
 
     header {
       display: flex;
