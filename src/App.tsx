@@ -6,6 +6,7 @@ import lightTheme from './styles/themes/light';
 import darkTheme from './styles/themes/dark';
 import Header from './components/Header';
 import Overview from './components/Overview/index';
+import TransactionsProvider from './contexts/transactions';
 
 const App: React.FC = () => {
   const [theme, toggleTheme] = useTheme();
@@ -14,7 +15,9 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Header toggleTheme={toggleTheme} theme={theme} />
-      <Overview />
+      <TransactionsProvider>
+        <Overview />
+      </TransactionsProvider>
     </ThemeProvider>
   );
 };
