@@ -7,8 +7,8 @@ export interface ITransaction {
   category: string;
 }
 
-export const transactionFormInitialState: ITransaction = {
-  title: '',
-  amount: 0,
-  category: ''
-};
+export interface ITransactionsContext {
+  isFetching: boolean;
+  error: string;
+  transactions: ITransaction[];
+}

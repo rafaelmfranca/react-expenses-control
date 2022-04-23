@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITransaction } from '../../utils/constants';
+import { ITransaction } from '../../utils/types';
 import StyledTransactionTable from './styles';
 
 type TransactionTableProps = {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ITransaction } from '../../utils/constants';
 import StyledTransactionList from './styles';
+import { ITransaction } from '../../utils/types';
 
 type TransactionListProps = {
   transactions: ITransaction[];
