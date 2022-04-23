@@ -25,7 +25,6 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
     const exchangeRates = await getExchangeRates();
 
     transaction.id = uuidv4();
-    transaction.type = transaction.type;
     transaction.createdAt = new Date();
     transaction.amount = Number(transaction.amount);
     transaction.exchangeRates = exchangeRates;
