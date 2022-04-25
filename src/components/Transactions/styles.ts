@@ -17,12 +17,17 @@ export const StyledTransactions = styled.div`
       border: none;
       background: transparent;
       color: ${({ theme }) => theme.colors.textBody};
+      transition: filter 0.25s linear;
 
       display: flex;
       align-items: center;
 
+      &:hover {
+        filter: brightness(1.2);
+      }
+
       svg {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         stroke-width: 0.5;
       }
     }

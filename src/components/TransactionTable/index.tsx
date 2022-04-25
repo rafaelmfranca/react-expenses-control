@@ -5,10 +5,12 @@ import StyledTransactionTable from './styles';
 
 type TransactionTableProps = {
   transactions: ITransaction[];
+  onOpenDeleteTransactionModal: (id: string) => void;
 };
 
 const TransactionTable: React.FC<TransactionTableProps> = ({
-  transactions
+  transactions,
+  onOpenDeleteTransactionModal
 }) => {
   return (
     <StyledTransactionTable>
@@ -42,7 +44,10 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
                 <button type="button">
                   <MdEdit />
                 </button>
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={() => onOpenDeleteTransactionModal(transaction.id)}
+                >
                   <MdDelete />
                 </button>
               </div>

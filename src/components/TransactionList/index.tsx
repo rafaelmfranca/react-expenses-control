@@ -5,9 +5,13 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 
 type TransactionListProps = {
   transactions: ITransaction[];
+  onOpenDeleteTransactionModal: (id: string) => void;
 };
 
-const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
+const TransactionList: React.FC<TransactionListProps> = ({
+  transactions,
+  onOpenDeleteTransactionModal
+}) => {
   return (
     <StyledTransactionList>
       {transactions.map((transaction) => (
@@ -18,7 +22,10 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
               <button type="button">
                 <MdEdit />
               </button>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => onOpenDeleteTransactionModal(transaction.id)}
+              >
                 <MdDelete />
               </button>
             </div>

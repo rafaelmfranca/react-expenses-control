@@ -1,5 +1,5 @@
 export interface ITransaction {
-  id?: string;
+  id?: any; // fix that
   createdAt?: any; // fix that
   type?: string;
   exchangeRates?: any; // fix that
@@ -16,4 +16,5 @@ export interface ITransactionsContext {
 
 export interface ITransactionsContextData extends ITransactionsContext {
   createTransaction: (transaction: ITransaction) => void;
+  deleteTransaction: (id: string) => void;
 }

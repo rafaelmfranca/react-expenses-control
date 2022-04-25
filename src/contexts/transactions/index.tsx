@@ -35,9 +35,19 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
     });
   };
 
+  const deleteTransaction = (id: string) => {
+    setData({
+      ...data,
+      transactions: data.transactions.filter(
+        (transaction) => transaction.id !== id
+      )
+    });
+  };
+
   const contextValue: ITransactionsContextData = {
     ...data,
-    createTransaction
+    createTransaction,
+    deleteTransaction
   };
 
   return (
