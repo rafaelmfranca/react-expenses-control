@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
-import StyledTransactions from './styles';
-import { ITransaction } from '../../utils/types';
+import React, { memo, useContext } from 'react';
+import { StyledTransactions, StyledEmptyTransactions } from './styles';
 import TransactionList from '../TransactionList/index';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import TransactionTable from '../TransactionTable';
 import { GoSettings } from 'react-icons/go';
 import TransactionsContext from '../../contexts/transactions/context';
+import noDataImg from '../../assets/noData.svg';
 
-const Transactions: React.FC = () => {
+const Transactions: React.FC = memo(() => {
   const { transactions } = useContext(TransactionsContext);
   const isSmallScreen = useMediaQuery('(max-width: 568px)');
 
@@ -19,13 +19,23 @@ const Transactions: React.FC = () => {
           <GoSettings />
         </button>
       </section>
-      {isSmallScreen ? (
-        <TransactionList transactions={transactions} />
+      {transactions.length > 0 ? (
+        <>
+          {isSmallScreen ? (
+            <TransactionList transactions={transactions} />
+          ) : (
+            <TransactionTable transactions={transactions} />
+          )}
+        </>
       ) : (
-        <TransactionTable transactions={transactions} />
+        <StyledEmptyTransactions>
+          <img src={noDataImg} alt="No data" />
+          <h3>Oops!</h3>
+          <p>Nothing to see here!</p>
+        </StyledEmptyTransactions>
       )}
     </StyledTransactions>
   );
-};
+});
 
 export default Transactions;

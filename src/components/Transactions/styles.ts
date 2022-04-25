@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledTransactions = styled.div`
+export const StyledTransactions = styled.div`
   margin-top: 3rem;
 
   section {
@@ -29,4 +29,16 @@ const StyledTransactions = styled.div`
   }
 `;
 
-export default StyledTransactions;
+export const StyledEmptyTransactions = styled.div`
+  margin: 4rem auto;
+  text-align: center;
+
+  img {
+    width: 10rem;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+`;
