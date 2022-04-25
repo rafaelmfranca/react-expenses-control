@@ -1,6 +1,7 @@
 import React from 'react';
 import StyledTransactionList from './styles';
 import { ITransaction } from '../../utils/types';
+import { MdEdit, MdDelete } from 'react-icons/md';
 
 type TransactionListProps = {
   transactions: ITransaction[];
@@ -11,7 +12,17 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
     <StyledTransactionList>
       {transactions.map((transaction) => (
         <li key={transaction.id} className={transaction.type}>
-          <p>{transaction.description}</p>
+          <div>
+            <p>{transaction.description}</p>
+            <div>
+              <button type="button">
+                <MdEdit />
+              </button>
+              <button type="button">
+                <MdDelete />
+              </button>
+            </div>
+          </div>
           <p className={transaction.type}>
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',

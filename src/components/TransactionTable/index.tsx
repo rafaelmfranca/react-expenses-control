@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdEdit, MdDelete } from 'react-icons/md';
 import { ITransaction } from '../../utils/types';
 import StyledTransactionTable from './styles';
 
@@ -35,6 +36,16 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
               {new Intl.DateTimeFormat('pt-BR').format(
                 new Date(transaction.createdAt)
               )}
+            </td>
+            <td>
+              <div>
+                <button type="button">
+                  <MdEdit />
+                </button>
+                <button type="button">
+                  <MdDelete />
+                </button>
+              </div>
             </td>
           </tr>
         ))}

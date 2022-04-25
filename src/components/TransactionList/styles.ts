@@ -30,7 +30,35 @@ const StyledTransactionList = styled.ul`
       }
     }
 
-    div {
+    div:first-of-type {
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        margin-left: 1rem;
+        gap: 0.5rem;
+
+        button {
+          background: none;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: filter 0.25s linear;
+
+          &:hover {
+            filter: brightness(1.2);
+          }
+
+          svg {
+            color: ${({ theme }) => theme.colors.textBody};
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+
+    div:nth-of-type(2) {
       margin-top: 1rem;
       display: flex;
       justify-content: space-between;

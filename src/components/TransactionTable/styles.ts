@@ -20,7 +20,7 @@ const StyledTransactionTable = styled.table`
   }
 
   td {
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     background: ${({ theme }) => theme.colors.shape};
 
     &:first-of-type {
@@ -38,6 +38,7 @@ const StyledTransactionTable = styled.table`
 
     &:last-of-type {
       border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.5rem;
     }
 
     &:nth-of-type(2) {
@@ -47,6 +48,31 @@ const StyledTransactionTable = styled.table`
 
       &.expense {
         color: var(--red-400);
+      }
+    }
+
+    div {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      button {
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: filter 0.25s linear;
+
+        &:hover {
+          filter: brightness(1.2);
+        }
+
+        svg {
+          color: ${({ theme }) => theme.colors.textBody};
+          font-size: 1.2rem;
+        }
       }
     }
   }
