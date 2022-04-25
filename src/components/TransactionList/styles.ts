@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledTransactionList = styled.ul`
   margin-top: 2rem;
   list-style-type: none;
+  padding-bottom: 7.5rem;
 
   li {
     width: 95%;

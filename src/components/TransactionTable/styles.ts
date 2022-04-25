@@ -5,6 +5,7 @@ const StyledTransactionTable = styled.table`
   width: 95%;
   border-spacing: 0 0.5rem;
   border-collapse: separate;
+  padding-bottom: 7rem;
 
   th {
     font-weight: 400;
