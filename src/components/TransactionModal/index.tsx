@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useState } from 'react';
+import React, { FormEvent, useCallback, useContext, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
@@ -25,17 +25,18 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   transactionType
 }) => {
   const { createTransaction } = useContext(TransactionsContext);
-  const [transactionForm, setTransactionForm] = useState(
-    transactionFormInitialState
-  );
+  const [transactionForm, setTransactionForm] = useState({
+    ...transactionFormInitialState
+  });
 
   const handleCreateTransaction = (e: FormEvent) => {
     e.preventDefault();
 
     transactionForm.type = transactionType;
+
     createTransaction(transactionForm);
 
-    setTransactionForm(transactionFormInitialState);
+    setTransactionForm({ ...transactionFormInitialState });
     onRequestClose();
   };
 
