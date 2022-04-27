@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdEdit, MdDelete } from 'react-icons/md';
+import TransactionsContext from '../../contexts/transactions/context';
 import { ITransaction } from '../../utils/types';
 import StyledTransactionTable from './styles';
 
 type TransactionTableProps = {
   transactions: ITransaction[];
   onOpenDeleteTransactionModal: (id: string) => void;
+  onOpenEditTransactionModal: (transaction: ITransaction) => void;
 };
 
 const TransactionTable: React.FC<TransactionTableProps> = ({
   transactions,
-  onOpenDeleteTransactionModal
+  onOpenDeleteTransactionModal,
+  onOpenEditTransactionModal
 }) => {
   return (
     <StyledTransactionTable>
@@ -31,7 +34,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
               {new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
                 currency: `${transaction.currency}`
-              }).format(transaction.amount)}
+              }).format(Number(transaction.amount))}
             </td>
             <td>{transaction.category}</td>
             <td>
@@ -41,7 +44,10 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
             </td>
             <td>
               <div>
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={() => onOpenEditTransactionModal(transaction)}
+                >
                   <MdEdit />
                 </button>
                 <button

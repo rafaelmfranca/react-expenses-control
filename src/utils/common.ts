@@ -2,13 +2,14 @@ import { ITransaction, ITransactionsContext } from './types';
 
 export const transactionFormInitialState: ITransaction = {
   description: '',
-  amount: 0,
+  amount: '0',
   currency: 'BRL',
   category: 'Other'
 };
 
 export const transactionsContextInitialState: ITransactionsContext = {
   isFetching: false,
+  isEditing: false,
   transactions: []
 };
 
@@ -27,8 +28,7 @@ export const currencies = [
   'CNY',
   'ILS',
   'ETH',
-  'XRP',
-  'DOGE'
+  'XRP'
 ];
 
 export const incomeCategories = [

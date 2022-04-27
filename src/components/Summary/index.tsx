@@ -14,9 +14,9 @@ const Summary: React.FC = () => {
     (acc, transaction) => {
       const { type, amount, currency, exchangeRates } = transaction;
 
-      let convertedAmount = amount;
+      let convertedAmount = Number(amount);
       if (currency !== 'BRL') {
-        convertedAmount = amount * Number(exchangeRates[currency].ask);
+        convertedAmount = convertedAmount * Number(exchangeRates[currency].ask);
       }
 
       if (type === 'income') {

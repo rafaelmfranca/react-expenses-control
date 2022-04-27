@@ -35,7 +35,7 @@ const DeleteTransactionModal: React.FC<DeleteTransactionModalProps> = ({
         <h2>Delete transaction</h2>
         <p>Are you sure you want to delete this transaction?</p>
         <div>
-          <button type="button" onClick={() => onRequestClose()}>
+          <button type="button" onClick={onRequestClose}>
             Cancel
           </button>
           <button type="button" onClick={handleDeleteTransaction}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { getExchangeRates } from '../../services/api';
 import { transactionsContextInitialState } from '../../utils/common';
 import {
@@ -10,7 +10,7 @@ import TransactionsContext from './context';
 import { v4 as uuidv4 } from 'uuid';
 
 type TransactionsProviderProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
@@ -26,12 +26,28 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
 
     transaction.id = uuidv4();
     transaction.createdAt = new Date();
-    transaction.amount = Number(transaction.amount);
     transaction.exchangeRates = exchangeRates;
 
     setData({
       ...data,
       transactions: [...data.transactions, transaction]
+    });
+  };
+
+  const updateTransaction = (transaction: ITransaction) => {
+    console.log('updatedTransaction', transaction);
+    console.log(
+      'updatedTransactions',
+      data.transactions.map((item) =>
+        item.id === transaction.id ? transaction : item
+      )
+    );
+
+    setData({
+      ...data,
+      transactions: data.transactions.map((item) =>
+        item.id === transaction.id ? transaction : item
+      )
     });
   };
 
@@ -44,10 +60,28 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
     });
   };
 
+  const setIsEditingTransaction = (flag: boolean) => {
+    setData({
+      ...data,
+      isEditing: flag
+    });
+  };
+
+  const setTransactionToEdit = (transaction: ITransaction) => {
+    setData({
+      ...data,
+      isEditing: true,
+      transactionToEdit: transaction
+    });
+  };
+
   const contextValue: ITransactionsContextData = {
     ...data,
     createTransaction,
-    deleteTransaction
+    deleteTransaction,
+    updateTransaction,
+    setTransactionToEdit,
+    setIsEditingTransaction
   };
 
   return (

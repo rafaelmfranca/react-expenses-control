@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
@@ -24,10 +24,17 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   onRequestClose,
   transactionType
 }) => {
-  const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction, isEditing, transactionToEdit, updateTransaction } =
+    useContext(TransactionsContext);
   const [transactionForm, setTransactionForm] = useState({
     ...transactionFormInitialState
   });
+
+  useEffect(() => {
+    if (transactionToEdit && isEditing) {
+      setTransactionForm({ ...transactionToEdit });
+    }
+  }, [isEditing]);
 
   const handleCreateTransaction = (e: FormEvent) => {
     e.preventDefault();
@@ -35,6 +42,15 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     transactionForm.type = transactionType;
 
     createTransaction(transactionForm);
+
+    setTransactionForm({ ...transactionFormInitialState });
+    onRequestClose();
+  };
+
+  const handleUpdateTransaction = (e: FormEvent) => {
+    e.preventDefault();
+
+    updateTransaction(transactionForm);
 
     setTransactionForm({ ...transactionFormInitialState });
     onRequestClose();
@@ -62,7 +78,9 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       >
         <RiCloseFill />
       </button>
-      <StyledTransactionForm onSubmit={handleCreateTransaction}>
+      <StyledTransactionForm
+        onSubmit={isEditing ? handleUpdateTransaction : handleCreateTransaction}
+      >
         <h2>Register transaction</h2>
         <input
           type="text"
@@ -106,8 +124,22 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
         </div>
         <StyledButton
           type="submit"
-          color={transactionType === 'expense' ? 'red' : 'green'}
-        >{`Add ${transactionType}`}</StyledButton>
+          color={
+            isEditing
+              ? transactionForm.type === 'expense'
+                ? 'red'
+                : 'green'
+              : transactionType === 'expense'
+              ? 'red'
+              : 'green'
+          }
+        >
+          {`${
+            isEditing
+              ? `Edit ${transactionForm.type}`
+              : `Add ${transactionType}`
+          }`}
+        </StyledButton>
       </StyledTransactionForm>
     </Modal>
   );

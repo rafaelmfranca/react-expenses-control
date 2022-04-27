@@ -6,13 +6,15 @@ import TransactionTable from '../TransactionTable';
 import { GoSettings } from 'react-icons/go';
 import TransactionsContext from '../../contexts/transactions/context';
 import noDataImg from '../../assets/noData.svg';
+import { ITransaction } from '../../utils/types';
 
 type TransactionsType = {
   onOpenDeleteTransactionModal: (id: string) => void;
+  onOpenEditTransactionModal: (transaction: ITransaction) => void;
 };
 
 const Transactions: React.FC<TransactionsType> = memo(
-  ({ onOpenDeleteTransactionModal }) => {
+  ({ onOpenDeleteTransactionModal, onOpenEditTransactionModal }) => {
     const { transactions } = useContext(TransactionsContext);
     const isSmallScreen = useMediaQuery('(max-width: 568px)');
 
@@ -30,11 +32,13 @@ const Transactions: React.FC<TransactionsType> = memo(
               <TransactionList
                 transactions={transactions}
                 onOpenDeleteTransactionModal={onOpenDeleteTransactionModal}
+                onOpenEditTransactionModal={onOpenEditTransactionModal}
               />
             ) : (
               <TransactionTable
                 transactions={transactions}
                 onOpenDeleteTransactionModal={onOpenDeleteTransactionModal}
+                onOpenEditTransactionModal={onOpenEditTransactionModal}
               />
             )}
           </>

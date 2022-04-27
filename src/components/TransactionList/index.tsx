@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StyledTransactionList from './styles';
 import { ITransaction } from '../../utils/types';
 import { MdEdit, MdDelete } from 'react-icons/md';
+import TransactionsContext from '../../contexts/transactions/context';
 
 type TransactionListProps = {
   transactions: ITransaction[];
   onOpenDeleteTransactionModal: (id: string) => void;
+  onOpenEditTransactionModal: (transaction: ITransaction) => void;
 };
 
 const TransactionList: React.FC<TransactionListProps> = ({
   transactions,
-  onOpenDeleteTransactionModal
+  onOpenDeleteTransactionModal,
+  onOpenEditTransactionModal
 }) => {
   return (
     <StyledTransactionList>
@@ -19,7 +22,10 @@ const TransactionList: React.FC<TransactionListProps> = ({
           <div>
             <p>{transaction.description}</p>
             <div>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => onOpenEditTransactionModal(transaction)}
+              >
                 <MdEdit />
               </button>
               <button
@@ -34,7 +40,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: `${transaction.currency}`
-            }).format(transaction.amount)}
+            }).format(Number(transaction.amount))}
           </p>
           <div>
             <span>{transaction.category}</span>
