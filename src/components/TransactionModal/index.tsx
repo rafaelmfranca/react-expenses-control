@@ -63,8 +63,21 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     setTransactionForm({ ...transactionForm, [name]: value });
   };
 
-  const categories =
-    transactionType === 'income' ? incomeCategories : expenseCategories;
+  const getCategories = () => {
+    let categories = [];
+
+    if (isEditing) {
+      categories =
+        transactionForm.type === 'income'
+          ? incomeCategories
+          : expenseCategories;
+    } else {
+      categories =
+        transactionType === 'income' ? incomeCategories : expenseCategories;
+    }
+
+    return categories;
+  };
 
   return (
     <Modal
@@ -107,7 +120,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
             value={transactionForm.category}
             onChange={handleTransactionFormChange}
           >
-            {categories.map((category) => (
+            {getCategories().map((category) => (
               <option key={category}>{category}</option>
             ))}
           </select>
