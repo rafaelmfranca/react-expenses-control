@@ -54,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: not-allowed;
   }
 
-  .react-modal-overlay {
+  .ReactModal__Overlay {
     background-color: ${({ theme }) => theme.colors.modalOverlayBackground};
     backdrop-filter: blur(3px);
 
@@ -68,13 +68,24 @@ const GlobalStyle = createGlobalStyle`
     right: 0;
     left: 0;
 
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+
     @media (max-width: 728px) {
       align-items: flex-end;
       z-index: 9999;
     }
   }
 
-  .react-modal-content {
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+
+  .ReactModal__Content {
     width: 100%;
     max-width: 576px;
     padding: 3rem;

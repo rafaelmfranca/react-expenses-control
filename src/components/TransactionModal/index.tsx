@@ -68,8 +68,9 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      overlayClassName="react-modal-overlay"
-      className="react-modal-content"
+      overlayClassName="ReactModal__Overlay"
+      className="ReactModal__Content"
+      closeTimeoutMS={200}
     >
       <button
         type="button"
