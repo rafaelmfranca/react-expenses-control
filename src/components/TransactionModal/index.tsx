@@ -33,6 +33,8 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   useEffect(() => {
     if (transactionToEdit && isEditing) {
       setTransactionForm({ ...transactionToEdit });
+    } else {
+      setTransactionForm({ ...transactionFormInitialState });
     }
   }, [isEditing]);
 
@@ -70,12 +72,12 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
       onRequestClose={onRequestClose}
       overlayClassName="ReactModal__Overlay"
       className="ReactModal__Content"
-      closeTimeoutMS={200}
+      closeTimeoutMS={100}
     >
       <button
         type="button"
         onClick={onRequestClose}
-        className="react-modal-close-btn"
+        className="ReactModal__CloseBtn"
       >
         <RiCloseFill />
       </button>

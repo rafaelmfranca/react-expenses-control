@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     left: 0;
 
     opacity: 0;
-    transition: opacity 200ms ease-in-out;
+    transition: opacity 100ms ease-in-out;
 
     @media (max-width: 728px) {
       align-items: flex-end;
@@ -101,7 +101,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .react-modal-close-btn {
+  .ReactModal__CloseBtn {
     position: absolute;
     right: 1rem;
     top: 1rem;
