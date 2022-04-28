@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { MdEdit, MdDelete } from 'react-icons/md';
-import TransactionsContext from '../../contexts/transactions/context';
 import { ITransaction } from '../../utils/types';
 import StyledTransactionTable from './styles';
 
