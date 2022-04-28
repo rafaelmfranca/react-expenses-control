@@ -14,7 +14,7 @@ const Overview: React.FC = () => {
     useState(false);
   const [transactionType, setTransactionType] = useState('expense');
   const [transactionToDelete, setTransactionToDelete] = useState('');
-  const { setTransactionToEdit, setIsEditingTransaction, isEditing } =
+  const { isEditing, setTransactionToEdit, setIsEditingTransaction } =
     useContext(TransactionsContext);
 
   const handleOpenTransactionModal = (type: string) => {

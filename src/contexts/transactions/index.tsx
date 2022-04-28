@@ -35,14 +35,6 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
   };
 
   const updateTransaction = (transaction: ITransaction) => {
-    console.log('updatedTransaction', transaction);
-    console.log(
-      'updatedTransactions',
-      data.transactions.map((item) =>
-        item.id === transaction.id ? transaction : item
-      )
-    );
-
     setData({
       ...data,
       transactions: data.transactions.map((item) =>
@@ -61,10 +53,10 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
   };
 
   const setIsEditingTransaction = (flag: boolean) => {
-    setData({
-      ...data,
+    setData((prevData) => ({
+      ...prevData,
       isEditing: flag
-    });
+    }));
   };
 
   const setTransactionToEdit = (transaction: ITransaction) => {
