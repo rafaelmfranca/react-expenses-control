@@ -26,13 +26,13 @@ const TransactionList: React.FC<TransactionListProps> = ({
                 type="button"
                 onClick={() => onOpenEditTransactionModal(transaction)}
               >
-                <MdEdit />
+                <MdEdit title={`Edit ${transaction.type}`} />
               </button>
               <button
                 type="button"
                 onClick={() => onOpenDeleteTransactionModal(transaction.id)}
               >
-                <MdDelete />
+                <MdDelete title={`Delete ${transaction.type}`} />
               </button>
             </div>
           </div>

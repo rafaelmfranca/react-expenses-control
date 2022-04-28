@@ -58,20 +58,20 @@ const StyledTransactionTable = styled.table`
       gap: 0.5rem;
 
       button {
-        background: none;
+        background: transparent;
         border: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: filter 0.25s linear;
-
-        &:hover {
-          filter: brightness(1.2);
-        }
 
         svg {
           color: ${({ theme }) => theme.colors.textBody};
           font-size: 1.2rem;
+          transition: color 0.25s linear;
+
+          &:hover {
+            color: ${({ theme }) => theme.colors.textTitle};
+          }
         }
       }
     }
