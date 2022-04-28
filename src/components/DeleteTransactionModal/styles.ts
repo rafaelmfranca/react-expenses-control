@@ -36,10 +36,10 @@ const StyledDeleteTransaction = styled.div`
       &:nth-of-type(2) {
         background: var(--red-400);
         color: white;
-        transition: filter 0.25s linear;
+        transition: background 0.25s linear;
 
         &:hover {
-          filter: brightness(1.2);
+          background: var(--red-500);
         }
       }
     }

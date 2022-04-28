@@ -7,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
     --sky-500: #0ea5e9;
 
     --green-400: #4ade80;
+    --green-500: #22c55e;
     --red-400: #f87171;
+    --red-500: #ef4444;
 
     --shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0/0.1),0 4px 6px -4px rgb(0 0 0/0.1);
