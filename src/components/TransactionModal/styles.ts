@@ -82,9 +82,9 @@ export const StyledButton = styled.button`
   color: white;
 
   border: none;
-  transition: filter 0.25s linear;
+  transition: background 0.25s linear;
 
   &:hover {
-    filter: contrast(1.1);
+    background: ${(props) => `var(--${props.color}-500)`};
   }
 `;

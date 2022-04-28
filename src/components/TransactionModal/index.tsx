@@ -104,6 +104,9 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           value={transactionForm.description}
           name="description"
           onChange={handleTransactionFormChange}
+          minLength={1}
+          required={true}
+          autoFocus
         />
         <input
           type="number"
@@ -111,6 +114,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           value={transactionForm.amount}
           name="amount"
           onChange={handleTransactionFormChange}
+          min="1"
         />
         <div>
           <label htmlFor="category">Category:</label>
