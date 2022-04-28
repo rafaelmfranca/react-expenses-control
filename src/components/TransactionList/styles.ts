@@ -8,7 +8,7 @@ const StyledTransactionList = styled.ul`
   li {
     width: 95%;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1rem 1.25rem;
 
     background-color: ${({ theme }) => theme.colors.shape};
     border-radius: 0.5rem;

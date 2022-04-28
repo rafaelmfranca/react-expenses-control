@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledTransactions = styled.div`
   margin-top: 3rem;
+  overflow-x: hidden;
 
   section {
     width: 95%;
