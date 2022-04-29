@@ -11,15 +11,5 @@ export const StyledHeaderContent = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  button {
-    background: transparent;
-    border: none;
-
-    svg {
-      font-size: 1.2rem;
-      color: var(--sky-500);
-    }
-  }
+  justify-content: center;
 `;
