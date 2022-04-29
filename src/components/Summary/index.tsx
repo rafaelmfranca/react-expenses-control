@@ -6,6 +6,7 @@ import {
 } from 'react-icons/ri';
 import TransactionsContext from '../../contexts/transactions/context';
 import StyledSummary from './styles';
+import AnimatedNumber from 'animated-number-react';
 
 const Summary: React.FC = () => {
   const { transactions } = useContext(TransactionsContext);
@@ -36,6 +37,12 @@ const Summary: React.FC = () => {
     }
   );
 
+  const formatValue = (value: number) =>
+    new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(value);
+
   return (
     <StyledSummary>
       <div>
@@ -44,10 +51,11 @@ const Summary: React.FC = () => {
           <RiArrowUpCircleFill style={{ color: 'var(--green-400)' }} />
         </header>
         <strong>
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }).format(summary.incomes)}
+          <AnimatedNumber
+            value={summary.incomes}
+            formatValue={formatValue}
+            duration={500}
+          />
         </strong>
       </div>
       <div>
@@ -56,10 +64,11 @@ const Summary: React.FC = () => {
           <RiArrowDownCircleFill style={{ color: 'var(--red-400)' }} />
         </header>
         <strong>
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }).format(summary.expenses)}
+          <AnimatedNumber
+            value={summary.expenses}
+            formatValue={formatValue}
+            duration={500}
+          />
         </strong>
       </div>
       <div>
@@ -68,10 +77,11 @@ const Summary: React.FC = () => {
           <RiSwapFill style={{ color: 'var(--sky-400)' }} />
         </header>
         <strong>
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }).format(summary.total)}
+          <AnimatedNumber
+            value={summary.total}
+            formatValue={formatValue}
+            duration={500}
+          />
         </strong>
       </div>
     </StyledSummary>
