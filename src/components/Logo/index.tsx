@@ -1,11 +1,14 @@
 import React from 'react';
-import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import StyledLogo from './styles';
+import { RiMoneyEuroCircleLine } from 'react-icons/ri';
 
 const Logo: React.FC = () => {
   return (
     <StyledLogo>
-      <RiMoneyDollarCircleFill />
+      <h2>
+        <RiMoneyEuroCircleLine />
+        xpenses<span>.control</span>
+      </h2>
     </StyledLogo>
   );
 };

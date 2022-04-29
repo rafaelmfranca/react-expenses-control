@@ -1,9 +1,22 @@
 import styled from 'styled-components';
 
 const StyledLogo = styled.div`
-  svg {
-    color: var(--sky-500);
-    font-size: 2.5rem;
+  h2 {
+    margin-top: 0.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: ${({ theme }) => theme.colors.textTitle};
+
+    span {
+      color: var(--sky-500);
+    }
+
+    svg {
+      font-size: 1.8rem;
+    }
   }
 `;
 
