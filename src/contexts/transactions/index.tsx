@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { getExchangeRates } from '../../services/api';
+import { getExchangeRates } from '../../services/exchangeRatesApi';
 import { transactionsContextInitialState } from '../../utils/common';
 import {
   ITransaction,
