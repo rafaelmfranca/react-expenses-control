@@ -16,6 +16,8 @@ const StyledLogo = styled.div`
 
     svg {
       font-size: 1.8rem;
+      margin-right: 0.8rem;
+      color: var(--sky-500);
     }
   }
 `;
