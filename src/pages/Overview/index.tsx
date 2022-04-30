@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import StyledOverview from './styles';
-import Summary from '../Summary/index';
-import Transactions from '../Transactions';
-import FabButton from '../FabButton';
-import TransactionModal from '../TransactionModal';
-import DeleteTransactionModal from '../DeleteTransactionModal';
+import Summary from '../../components/Summary/index';
+import Transactions from '../../components/Transactions';
+import FabButton from '../../components/FabButton';
+import TransactionModal from '../../components/TransactionModal';
+import DeleteTransactionModal from '../../components/DeleteTransactionModal';
 import TransactionsContext from '../../contexts/transactions/context';
 import { ITransaction } from '../../utils/types';
 
