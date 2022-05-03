@@ -11,9 +11,12 @@ import {
   RiLineChartLine,
   RiMoonLine,
   RiSunLine,
-  RiGithubLine
+  RiGithubLine,
+  RiLogoutBoxLine
 } from 'react-icons/ri';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 type SideMenu = {
   theme: string;
@@ -22,64 +25,85 @@ type SideMenu = {
 
 const SideMenu: React.FC<SideMenu> = ({ theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
 
   const handleIsOpenSideMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
+
   return (
     <>
-      <StyledSideMenu
-        animate={isOpen ? 'open' : 'closed'}
-        variants={{
-          open: { opacity: 1, x: 0 },
-          closed: { opacity: 0, x: '-100%' }
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        <StyledInnerNav>
-          <ul>
-            <motion.li whileTap={{ scale: 1.1 }}>
-              <a href="#">
-                <RiStackLine />
-                Overview
-              </a>
-            </motion.li>
-            <motion.li whileTap={{ scale: 1.1 }}>
-              <a href="#">
-                <RiLineChartLine />
-                Charts
-              </a>
-            </motion.li>
-          </ul>
-          <section>
-            <motion.button
-              type="button"
-              onClick={toggleTheme}
-              whileTap={{ scale: 1.1 }}
-            >
-              {theme === 'light' ? (
-                <>
-                  <RiSunLine />
-                  {`${theme} mode`}
-                </>
-              ) : (
-                <>
-                  <RiMoonLine />
-                  {`${theme} mode`}
-                </>
-              )}
-            </motion.button>
-            <a
-              href="https://github.com/rafaelmfranca/react-expenses-control"
-              target="_blank"
-            >
-              <RiGithubLine />
-              Github
-            </a>
-          </section>
-        </StyledInnerNav>
-      </StyledSideMenu>
+      <AnimatePresence>
+        {isOpen && (
+          <StyledSideMenu
+            key="side-menu"
+            initial={{ opacity: 0, x: '-100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.25 }}
+            exit={{ opacity: 0, x: '-100%' }}
+          >
+            <StyledInnerNav>
+              <ul>
+                <motion.li whileTap={{ scale: 1.1 }}>
+                  <a href="#">
+                    <RiStackLine />
+                    Overview
+                  </a>
+                </motion.li>
+                <motion.li whileTap={{ scale: 1.1 }}>
+                  <a href="#">
+                    <RiLineChartLine />
+                    Charts
+                  </a>
+                </motion.li>
+              </ul>
+              <section>
+                <motion.button
+                  type="button"
+                  onClick={toggleTheme}
+                  whileTap={{ scale: 1.1 }}
+                >
+                  {theme === 'light' ? (
+                    <>
+                      <RiSunLine />
+                      {`${theme} mode`}
+                    </>
+                  ) : (
+                    <>
+                      <RiMoonLine />
+                      {`${theme} mode`}
+                    </>
+                  )}
+                </motion.button>
+                <a
+                  href="https://github.com/rafaelmfranca/react-expenses-control"
+                  target="_blank"
+                >
+                  <RiGithubLine />
+                  Github
+                </a>
+                <motion.button
+                  type="button"
+                  onClick={handleSignOut}
+                  whileTap={{ scale: 1.1 }}
+                >
+                  <>
+                    <RiLogoutBoxLine />
+                    Logout
+                  </>
+                </motion.button>
+              </section>
+            </StyledInnerNav>
+          </StyledSideMenu>
+        )}
+      </AnimatePresence>
+
       <StyledMenuButton
         onClick={handleIsOpenSideMenu}
         whileHover={{ scale: 1.1 }}

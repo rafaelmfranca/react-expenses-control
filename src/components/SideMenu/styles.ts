@@ -22,6 +22,7 @@ export const StyledSideMenu = styled(motion.nav)`
       justify-content: flex-start;
       gap: 2rem;
       padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
 
       border: none;
       background: transparent;
