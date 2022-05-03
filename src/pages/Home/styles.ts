@@ -37,6 +37,7 @@ export const StyledHomeContent = styled.div`
   }
 
   button {
+    width: 90%;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -65,5 +66,11 @@ export const StyledHomeContent = styled.div`
   @media (max-width: 375px) {
     background: transparent;
     box-shadow: none;
+
+    .separator {
+      span {
+        background: ${({ theme }) => theme.colors.background};
+      }
+    }
   }
 `;

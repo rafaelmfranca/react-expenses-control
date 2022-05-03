@@ -43,22 +43,24 @@ const Overview: React.FC = () => {
 
   return (
     <StyledOverview>
-      <Summary />
-      <Transactions
-        onOpenDeleteTransactionModal={handleOpenDeleteTransactionModal}
-        onOpenEditTransactionModal={handleOpenEditTransactionModal}
-      />
-      <FabButton onOpenTransactionModal={handleOpenTransactionModal} />
-      <TransactionModal
-        isOpen={isTransactionModalOpen}
-        onRequestClose={handleCloseTransactionModal}
-        transactionType={transactionType}
-      />
-      <DeleteTransactionModal
-        isOpen={isDeleteTransactionModalOpen}
-        onRequestClose={handleCloseDeleteTransactionModal}
-        transactionId={transactionToDelete}
-      />
+      <>
+        <Summary />
+        <Transactions
+          onOpenDeleteTransactionModal={handleOpenDeleteTransactionModal}
+          onOpenEditTransactionModal={handleOpenEditTransactionModal}
+        />
+        <FabButton onOpenTransactionModal={handleOpenTransactionModal} />
+        <TransactionModal
+          isOpen={isTransactionModalOpen}
+          onRequestClose={handleCloseTransactionModal}
+          transactionType={transactionType}
+        />
+        <DeleteTransactionModal
+          isOpen={isDeleteTransactionModalOpen}
+          onRequestClose={handleCloseDeleteTransactionModal}
+          transactionId={transactionToDelete}
+        />
+      </>
     </StyledOverview>
   );
 };
