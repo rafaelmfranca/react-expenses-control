@@ -1,13 +1,13 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import { StyledTransactions, StyledEmptyTransactions } from './styles';
 import TransactionList from '../TransactionList/index';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import TransactionTable from '../TransactionTable';
 import { GoSettings } from 'react-icons/go';
-import TransactionsContext from '../../contexts/transactions/context';
 import noDataImg from '../../assets/noData.svg';
 import { ITransaction } from '../../utils/types';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import useTransactions from '../../hooks/useTransactions';
 
 type TransactionsType = {
   onOpenDeleteTransactionModal: (id: string) => void;
@@ -16,7 +16,7 @@ type TransactionsType = {
 
 const Transactions: React.FC<TransactionsType> = memo(
   ({ onOpenDeleteTransactionModal, onOpenEditTransactionModal }) => {
-    const { transactions, isLoading } = useContext(TransactionsContext);
+    const { transactions, isLoading } = useTransactions();
     const isSmallScreen = useMediaQuery('(max-width: 568px)');
 
     return (

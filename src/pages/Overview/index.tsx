@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import StyledOverview from './styles';
 import Summary from '../../components/Summary/index';
 import Transactions from '../../components/Transactions';
 import FabButton from '../../components/FabButton';
 import TransactionModal from '../../components/TransactionModal';
 import DeleteTransactionModal from '../../components/DeleteTransactionModal';
-import TransactionsContext from '../../contexts/transactions/context';
 import { ITransaction } from '../../utils/types';
+import useTransactions from '../../hooks/useTransactions';
 
 const Overview: React.FC = () => {
   const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false);
@@ -15,7 +15,7 @@ const Overview: React.FC = () => {
   const [transactionType, setTransactionType] = useState('expense');
   const [transactionToDelete, setTransactionToDelete] = useState('');
   const { isEditing, setTransactionToEdit, setIsEditingTransaction } =
-    useContext(TransactionsContext);
+    useTransactions();
 
   const handleOpenTransactionModal = (type: string) => {
     setTransactionType(type);

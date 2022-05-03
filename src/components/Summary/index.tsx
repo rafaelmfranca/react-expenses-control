@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   RiArrowDownCircleFill,
   RiArrowUpCircleFill,
   RiSwapFill
 } from 'react-icons/ri';
-import TransactionsContext from '../../contexts/transactions/context';
 import StyledSummary from './styles';
 import AnimatedNumber from 'animated-number-react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import useTransactions from '../../hooks/useTransactions';
 
 const Summary: React.FC = () => {
-  const { transactions, isLoading } = useContext(TransactionsContext);
+  const { transactions, isLoading } = useTransactions();
 
   const summary = transactions.reduce(
     (acc, transaction) => {

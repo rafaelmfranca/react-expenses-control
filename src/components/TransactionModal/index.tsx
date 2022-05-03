@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { StyledTransactionForm, StyledButton } from './styles';
 import { RiCloseFill } from 'react-icons/ri';
@@ -8,7 +8,7 @@ import {
   incomeCategories,
   expenseCategories
 } from '../../utils/common';
-import TransactionsContext from '../../contexts/transactions/context';
+import useTransactions from '../../hooks/useTransactions';
 
 // bind modal for acessibility purposes
 Modal.setAppElement('#root');
@@ -25,7 +25,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   transactionType
 }) => {
   const { createTransaction, isEditing, transactionToEdit, updateTransaction } =
-    useContext(TransactionsContext);
+    useTransactions();
   const [transactionForm, setTransactionForm] = useState({
     ...transactionFormInitialState
   });

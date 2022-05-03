@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
-import TransactionsContext from '../../contexts/transactions/context';
+import useTransactions from '../../hooks/useTransactions';
 import StyledDeleteTransaction from './styles';
 
 // bind modal for acessibility purposes
@@ -17,7 +17,7 @@ const DeleteTransactionModal: React.FC<DeleteTransactionModalProps> = ({
   onRequestClose,
   transactionId
 }) => {
-  const { deleteTransaction } = useContext(TransactionsContext);
+  const { deleteTransaction } = useTransactions();
 
   const handleDeleteTransaction = () => {
     deleteTransaction(transactionId);
