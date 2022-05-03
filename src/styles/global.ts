@@ -120,6 +120,11 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+  .react-loading-skeleton {
+    --base-color: ${({ theme }) => theme.colors.background};
+    --highlight-color: ${({ theme }) => theme.colors.shape};
+  }
 `;
 
 export default GlobalStyle;

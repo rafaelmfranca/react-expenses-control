@@ -7,6 +7,7 @@ import { GoSettings } from 'react-icons/go';
 import TransactionsContext from '../../contexts/transactions/context';
 import noDataImg from '../../assets/noData.svg';
 import { ITransaction } from '../../utils/types';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 type TransactionsType = {
   onOpenDeleteTransactionModal: (id: string) => void;
@@ -15,7 +16,7 @@ type TransactionsType = {
 
 const Transactions: React.FC<TransactionsType> = memo(
   ({ onOpenDeleteTransactionModal, onOpenEditTransactionModal }) => {
-    const { transactions } = useContext(TransactionsContext);
+    const { transactions, isLoading } = useContext(TransactionsContext);
     const isSmallScreen = useMediaQuery('(max-width: 568px)');
 
     return (
@@ -44,9 +45,17 @@ const Transactions: React.FC<TransactionsType> = memo(
           </>
         ) : (
           <StyledEmptyTransactions>
-            <img src={noDataImg} alt="No data" />
-            <h3>Oops!</h3>
-            <p>Nothing to see here!</p>
+            {isLoading ? (
+              <SkeletonTheme width="90%" height="3rem">
+                <Skeleton count={3} style={{ marginBottom: '0.5rem' }} />
+              </SkeletonTheme>
+            ) : (
+              <>
+                <img src={noDataImg} alt="No data" />
+                <h3>Oops!</h3>
+                <p>Nothing to see here!</p>
+              </>
+            )}
           </StyledEmptyTransactions>
         )}
       </StyledTransactions>
