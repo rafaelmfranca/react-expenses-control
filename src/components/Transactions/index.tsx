@@ -46,7 +46,7 @@ const Transactions: React.FC<TransactionsType> = memo(
         ) : (
           <StyledEmptyTransactions>
             {isLoading ? (
-              <SkeletonTheme width="90%" height="3rem">
+              <SkeletonTheme width="95%" height="3rem">
                 <Skeleton count={3} style={{ marginBottom: '0.5rem' }} />
               </SkeletonTheme>
             ) : (
