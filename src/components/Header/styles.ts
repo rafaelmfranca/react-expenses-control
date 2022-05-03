@@ -7,9 +7,5 @@ export const StyledHeader = styled.header`
 export const StyledHeaderContent = styled.div`
   max-width: 1120px;
   margin: 0 auto;
-  padding: 1rem 1rem 5rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 1rem 1rem 7rem;
 `;

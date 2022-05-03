@@ -1,12 +1,12 @@
 import React from 'react';
-import Logo from '../Logo/index';
+import Avatar from '../Avatar';
 import { StyledHeader, StyledHeaderContent } from './styles';
 
 const Header: React.FC = () => {
   return (
     <StyledHeader>
       <StyledHeaderContent>
-        <Logo />
+        <Avatar />
       </StyledHeaderContent>
     </StyledHeader>
   );
