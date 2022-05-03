@@ -10,6 +10,7 @@ import TransactionsProvider from './contexts/transactions';
 import SideMenu from './components/SideMenu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import AuthProvider from './contexts/auth/index';
 
 const App: React.FC = () => {
   const [theme, toggleTheme] = useTheme();
@@ -18,19 +19,21 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/overview"
-            element={
-              <TransactionsProvider>
-                <SideMenu toggleTheme={toggleTheme} theme={theme} />
-                <Header />
-                <Overview />
-              </TransactionsProvider>
-            }
-          />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/overview"
+              element={
+                <TransactionsProvider>
+                  <SideMenu toggleTheme={toggleTheme} theme={theme} />
+                  <Header />
+                  <Overview />
+                </TransactionsProvider>
+              }
+            />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
   );
