@@ -38,12 +38,12 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     }
   }, [isEditing]);
 
-  const handleCreateTransaction = (e: FormEvent) => {
+  const handleCreateTransaction = async (e: FormEvent) => {
     e.preventDefault();
 
     transactionForm.type = transactionType;
 
-    createTransaction(transactionForm);
+    await createTransaction(transactionForm);
 
     setTransactionForm({ ...transactionFormInitialState });
     onRequestClose();

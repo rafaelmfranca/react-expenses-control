@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { getExchangeRates } from '../../services/exchangeRatesApi';
 import { transactionsContextInitialState } from '../../utils/common';
 import {
@@ -7,7 +7,8 @@ import {
   ITransactionsContextData
 } from '../../utils/types';
 import TransactionsContext from './context';
-import { v4 as uuidv4 } from 'uuid';
+import { db } from '../../services/firebase';
+import useAuth from '../../hooks/useAuth';
 
 type TransactionsProviderProps = {
   children?: ReactNode;
@@ -19,18 +20,46 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
   const [data, setData] = useState<ITransactionsContext>(
     transactionsContextInitialState
   );
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      const userRef = db.ref(`transactions/${user.id}`);
+      userRef.once('value', (user) => {
+        const transactions = user.val();
+
+        if (transactions) {
+          setData({
+            ...transactionsContextInitialState,
+            transactions: Object.entries(transactions as ITransaction[]).map(
+              ([key, transaction]) => {
+                transaction.id = key;
+                return transaction;
+              }
+            )
+          });
+        }
+        setIsLoading(false);
+      });
+    }
+  }, [user]);
 
   const createTransaction = async (transaction: ITransaction) => {
-    // TODO: set loading
     const exchangeRates = await getExchangeRates();
 
-    transaction.id = uuidv4();
-    transaction.createdAt = new Date();
+    transaction.createdAt = Date();
     transaction.exchangeRates = exchangeRates;
+
+    const userTransactionRef = db.ref(`transactions/${user?.id}`);
+    const newTransaction = await userTransactionRef.push(transaction);
 
     setData({
       ...data,
-      transactions: [...data.transactions, transaction]
+      transactions: [
+        ...data.transactions,
+        { ...transaction, id: newTransaction.key }
+      ]
     });
   };
 
@@ -73,7 +102,8 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
     deleteTransaction,
     updateTransaction,
     setTransactionToEdit,
-    setIsEditingTransaction
+    setIsEditingTransaction,
+    isLoading
   };
 
   return (
