@@ -72,7 +72,10 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
     });
   };
 
-  const deleteTransaction = (id: string) => {
+  const deleteTransaction = async (id: string) => {
+    const userTransactionRef = db.ref(`transactions/${user?.id}`);
+    await userTransactionRef.child(id).remove();
+
     setData({
       ...data,
       transactions: data.transactions.filter(

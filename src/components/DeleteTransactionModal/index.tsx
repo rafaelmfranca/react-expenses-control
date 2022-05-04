@@ -19,8 +19,8 @@ const DeleteTransactionModal: React.FC<DeleteTransactionModalProps> = ({
 }) => {
   const { deleteTransaction } = useTransactions();
 
-  const handleDeleteTransaction = () => {
-    deleteTransaction(transactionId);
+  const handleDeleteTransaction = async () => {
+    await deleteTransaction(transactionId);
     onRequestClose();
   };
 
