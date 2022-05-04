@@ -20,7 +20,7 @@ export interface ITransactionsContextData extends ITransactionsContext {
   isLoading: boolean;
   createTransaction: (transaction: ITransaction) => Promise<void>;
   deleteTransaction: (id: string) => Promise<void>;
-  updateTransaction: (transaction: ITransaction) => void;
+  updateTransaction: (transaction: ITransaction) => Promise<void>;
   setTransactionToEdit: (transaction: ITransaction) => void;
   setIsEditingTransaction: (flag: boolean) => void;
 }

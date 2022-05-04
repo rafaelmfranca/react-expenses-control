@@ -63,7 +63,10 @@ const TransactionsProvider: React.FC<TransactionsProviderProps> = ({
     });
   };
 
-  const updateTransaction = (transaction: ITransaction) => {
+  const updateTransaction = async (transaction: ITransaction) => {
+    const userTransactionRef = db.ref(`transactions/${user?.id}`);
+    await userTransactionRef.child(transaction.id).set(transaction);
+
     setData({
       ...data,
       transactions: data.transactions.map((item) =>

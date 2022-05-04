@@ -49,10 +49,10 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     onRequestClose();
   };
 
-  const handleUpdateTransaction = (e: FormEvent) => {
+  const handleUpdateTransaction = async (e: FormEvent) => {
     e.preventDefault();
 
-    updateTransaction(transactionForm);
+    await updateTransaction(transactionForm);
 
     setTransactionForm({ ...transactionFormInitialState });
     onRequestClose();
