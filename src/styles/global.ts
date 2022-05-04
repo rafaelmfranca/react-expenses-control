@@ -125,6 +125,23 @@ const GlobalStyle = createGlobalStyle`
     --base-color: ${({ theme }) => theme.colors.background};
     --highlight-color: ${({ theme }) => theme.colors.shape};
   }
+
+  .react-toastify {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    -webkit-font-smoothing: antialiased;
+
+    background: ${({ theme }) => theme.colors.shape};
+    color: ${({ theme }) => theme.colors.textTitle};
+
+    svg {
+      color: ${({ theme }) => theme.colors.textBody};
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.textTitle};
+      }
+    }
+  }
 `;
 
 export default GlobalStyle;

@@ -3,6 +3,7 @@ import AuthContext from './context';
 import { firebase, auth } from '../../services/firebase';
 import { IUser } from '../../utils/types';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 type AuthProviderProps = {
   children?: React.ReactNode;
@@ -61,7 +62,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         navigate('/overview');
       }
     } catch (err) {
-      console.log(err); // Toast error
+      toast.error('Oops! Something went wrong, please try again.');
     } finally {
       setSignInLoading(false);
     }

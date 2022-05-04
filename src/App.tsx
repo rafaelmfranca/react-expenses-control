@@ -11,6 +11,8 @@ import SideMenu from './components/SideMenu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AuthProvider from './contexts/auth/index';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: React.FC = () => {
   const [theme, toggleTheme] = useTheme();
@@ -18,6 +20,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
+      <ToastContainer autoClose={3000} toastClassName="react-toastify" />
       <BrowserRouter>
         <AuthProvider>
           <Routes>
