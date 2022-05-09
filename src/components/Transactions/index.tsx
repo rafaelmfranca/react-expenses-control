@@ -23,9 +23,6 @@ const Transactions: React.FC<TransactionsType> = memo(
       <StyledTransactions>
         <section>
           <h3>Transactions</h3>
-          <button>
-            <GoSettings />
-          </button>
         </section>
         {transactions.length > 0 ? (
           <>
@@ -46,8 +43,14 @@ const Transactions: React.FC<TransactionsType> = memo(
         ) : (
           <StyledEmptyTransactions>
             {isLoading ? (
-              <SkeletonTheme width="95%" height="3rem">
-                <Skeleton count={3} style={{ marginBottom: '0.5rem' }} />
+              <SkeletonTheme
+                width="95%"
+                height={isSmallScreen ? '7rem' : '4.5rem'}
+              >
+                <Skeleton
+                  count={isSmallScreen ? 4 : 5}
+                  style={{ marginBottom: '0.5rem' }}
+                />
               </SkeletonTheme>
             ) : (
               <>

@@ -19,7 +19,7 @@ const StyledTransactionList = styled.ul`
     }
 
     p:last-of-type {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
 
       &.income {
         color: var(--green-400);
